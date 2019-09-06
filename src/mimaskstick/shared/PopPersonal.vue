@@ -1,12 +1,12 @@
 <template>
-  <BasePopPersonal :top="300">
+  <BasePopPersonal>
     <template #header>
-      <h2 class="line">
+      <h1 class="line">
         <img
           src="https://donginbi-event.s3.amazonaws.com/mimaskstick/images/shared/tl-personal.png"
           alt="정보입력"
         />
-      </h2>
+      </h1>
     </template>
     <template #content>
       <PersonalForm :phoneCorpAuth="true"></PersonalForm>
@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import Popup from '@/shared/Popup'
-
 import BasePopPersonal from '@/shared/BasePopPersonal'
 import PersonalForm from '@/shared/PersonalForm'
 
@@ -31,7 +29,7 @@ export default {
         isAuth: null,
         number: ''
       },
-      newUserModel: {
+      userModel: {
         name: '',
         phoneCorp: null,
         phone: '',

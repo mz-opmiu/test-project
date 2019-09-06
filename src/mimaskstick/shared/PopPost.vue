@@ -1,30 +1,25 @@
 <template>
-  <Popup
-    :top="300"
-    :show="this.currentPop == 'Personal'"
-    animation="rotate"
-    @hide="closePop()"
-  >
-    <header class="popup__header">
-      <slot name="header">
-        <h1>기본 타이틀</h1>
-      </slot>
-    </header>
-    <div class="popup__content">
-      <slot name="content">
-        <p>기본 컨텐츠</p>
-      </slot>
-    </div>
-  </Popup>
+  <BasePopPost>
+    <template #header>
+      <h1 class="line">
+        <img
+          src="https://donginbi-event.s3.amazonaws.com/mimaskstick/images/shared/tl-post.png"
+          alt="우편번호"
+        />
+      </h1>
+    </template>
+
+    <template #content :class="'popup__inner-con'"></template>
+  </BasePopPost>
 </template>
 
 <script>
-import Popup from '@/shared/Popup'
+import BasePopPost from '@/shared/BasePopPost'
+
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: 'BasePopPersonal',
-  props: {},
+  name: 'PopPersonal',
   data() {
     return {
       allAgree: false,
@@ -46,7 +41,7 @@ export default {
       }
     }
   },
-  components: { Popup },
+  components: { BasePopPost },
   computed: {
     ...mapState(['currentPop'])
   },

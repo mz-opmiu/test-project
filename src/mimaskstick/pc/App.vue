@@ -13,7 +13,7 @@
 import Navi from '@/mimaskstick/pc/Navi'
 import Visual from '@/mimaskstick/shared/Visual'
 import PopPersonal from '@/mimaskstick/shared/PopPersonal'
-import PopPost from '@/shared/PopPost'
+import PopPost from '@/mimaskstick/shared/PopPost'
 
 import { mapState, mapMutations } from 'vuex'
 
