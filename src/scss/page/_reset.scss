@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: auto;
+}
+
+html,
+body,
+input,
+textarea {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+select,
+button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+iframe.youtube {
+  width: 100%;
+  height: 100%;
+}
+
+input,
+select,
+textarea {
+  // ios default style override
+  -webkit-appearance: none;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}

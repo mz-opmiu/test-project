@@ -1,0 +1,181 @@
+$popWidth: 720px;
+$popInnerWidth: 620px;
+$image-url: 'https://donginbi-event.s3.amazonaws.com/mimaskstick/images/shared';
+
+%inputText {
+  height: 70px;
+  padding: 0 20px;
+  background-color: #fff;
+  color: #757575;
+  border: 1px solid #c2c2c2;
+  font-size: 22px;
+  line-height: 70px;
+}
+
+.pc {
+  .popup {
+    transform: translateX(-50%) scale(0.88889);
+  }
+}
+
+.popup {
+  position: absolute;
+  // top: 0;
+  left: 50%;
+  width: $popWidth;
+  // margin-top: 100px;
+  text-align: left;
+  background: #eee2cf;
+  transform: translateX(-50%);
+  font-size: 0;
+  z-index: 110;
+
+  h4 {
+    width: $popInnerWidth;
+    text-align: center;
+    margin: 80px auto 50px;
+
+    &.line {
+      padding-bottom: 50px;
+      border-bottom: 1px solid #b1a795;
+    }
+  }
+
+  &__inner {
+    width: $popInnerWidth;
+    margin: 0 auto;
+  }
+
+  &__header {
+    width: 100%;
+    font-size: 0;
+  }
+
+  &__content {
+    font-size: 0;
+    text-align: center;
+    padding-bottom: 36px;
+  }
+
+  input[type='text'],
+  input[type='tel'],
+  input[type='number'],
+  textarea,
+  select {
+    @extend %inputText;
+    width: 100%;
+  }
+
+  textarea {
+    height: 190px;
+    padding: 25px;
+    line-height: 40px;
+    resize: none;
+    white-space: pre-wrap;
+    &::placeholder {
+      opacity: 1; /* 파이어폭스에서 뿌옇게 나오는 현상을 방지하기 위한 css */
+    }
+  }
+
+  .btn__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 39px;
+    height: 39px;
+    font-size: 0;
+    @include background($image-url + '/btn-close.png');
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    @include background($image-url + '/select-arrow.png', $color: #fff, $position: 90% 50%);
+
+    &::-ms-expand {
+      display: none;
+    }
+  }
+}
+
+//------------------
+// button
+//------------------
+$redColor: #91153b;
+$reddishBrownColor: #4c0f22;
+$brownColor: #7b5745;
+
+.popbtn {
+  color: #fff;
+  font-size: 0;
+  @include background($image-url + '/btns.jpg');
+
+  // &.big {
+  //   width: 100%;
+  //   height: 122px;
+  //   background: #4c0f22;
+  // }
+
+  // &.half {
+  //   width: 50%;
+  //   height: 125px;
+  // }
+
+  &.big {
+    width: 100%;
+    height: 122px;
+  }
+
+  &.half {
+    width: 50%;
+    height: 122px;
+  }
+
+  &__left {
+    background: $redColor;
+  }
+  &__right {
+    background: $reddishBrownColor;
+  }
+  &__next {
+    width: 100%;
+    height: 122px;
+    background-position: 0 -132px;
+  }
+
+  &__prev {
+    background-position: -1460px 0;
+  }
+  &__done {
+    background-position: -1820px 0;
+  }
+  &__no {
+    background-position: -1460px -132px;
+  }
+  &__yes {
+    background-position: -1820px -132px;
+  }
+  &__dateSelect {
+    background-position: 0 -264px;
+  }
+  &__win {
+    background-position: -1460px -264px;
+  }
+  &__share {
+    background-position: -1820px -264px;
+  }
+  &__confirm {
+    background-position: -730px 0;
+  }
+
+  &__ratingStar {
+    background-position: -730px -132px;
+  }
+  &__complete {
+    background-position: -730px -264px;
+  }
+  &__confirm.half {
+    background-position: -1460px -264px;
+  }
+}

@@ -1,0 +1,26 @@
+// .pc {
+.wrap {
+  position: relative;
+  min-width: $min-width;
+  // max-width: $max-width;
+  margin: 0 auto;
+}
+
+.section__inner {
+  position: relative;
+  width: $min-width;
+  margin: 0 auto;
+}
+// }
+
+// .mobile {
+//   .wrap {
+//     width: $max-width;
+//     margin: 0 auto;
+//   }
+
+//   .section__inner {
+//     width: $min-width;
+//     margin: 0 auto;
+//   }
+// }
