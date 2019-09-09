@@ -1,22 +1,22 @@
 <template>
-  <transition name="vodal-fade">
+  <transition name="popup-fade">
     <div
       v-show="show"
       tabindex="-1"
       :style="customDuration"
-      :class="['vodal', className]"
+      :class="['popup', className]"
       @keyup.esc="onEsc"
     >
       <div
-        class="vodal-mask"
+        class="popup-mask"
         v-if="mask"
         @click="onClickMask"
         :style="customMaskStyles"
       />
-      <transition :name="`vodal-${animation}`">
-        <div class="vodal-dialog" v-show="show" :style="dialogStyle">
+      <transition :name="`popup-${animation}`">
+        <div class="popup-dialog" v-show="show" :style="dialogStyle">
           <slot></slot>
-          <span class="vodal-close" v-if="closeButton" @click="$emit('hide')"
+          <span class="popup-close" v-if="closeButton" @click="$emit('hide')"
             >닫기</span
           >
         </div>
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'vodal',
+  name: 'popup',
   props: {
     show: {
       type: Boolean,
@@ -127,5 +127,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/scss/vodal/common.scss';
+@import '~@/scss/popup/common.scss';
 </style>

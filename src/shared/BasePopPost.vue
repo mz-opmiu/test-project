@@ -1,29 +1,24 @@
 <template>
-  <Popup
-    :show="this.currentPop == 'Post'"
-    :top="100"
-    animation="rotate"
-    @hide="openPop('Personal')"
-  >
+  <div>
     <header class="popup__header">
       <slot name="header">
         <h1>기본 타이틀</h1>
       </slot>
     </header>
     <div class="popup__content">
-      <slot name="content">기본 영역</slot>
       <DaumPostcode :on-complete="postComplete" :animation="true" />
+      <slot name="content"></slot>
     </div>
-  </Popup>
+  </div>
 </template>
 
 <script>
 import DaumPostcode from 'vuejs-daum-postcode'
-import Popup from '@/shared/Popup'
-import { mapState, mapMutations } from 'vuex'
+import { EventBus } from '@utils/eventBus.js'
+import { mapMutations } from 'vuex'
 
 export default {
-  name: 'PopPost',
+  name: 'BasePopPost',
   data() {
     return {
       userModel: {
@@ -32,11 +27,10 @@ export default {
       }
     }
   },
-  components: { Popup, DaumPostcode },
-  computed: {
-    ...mapState(['currentPop'])
+  created() {
+    console.log('basePopPost 생성')
   },
-
+  components: { DaumPostcode },
   methods: {
     ...mapMutations(['openPop']),
     postComplete(data) {
@@ -55,7 +49,8 @@ export default {
       }
       this.userModel.zipcode = data.zonecode
       this.userModel.address = fullAddress
-      this.updateUserPost(this.userModel)
+      EventBus.$emit('updateUserAddress', this.userModel)
+      // this.updateUserAddress(this.userModel)
       this.openPop('Personal')
 
       // ie에서 우편번호 팝업 관련 버그 처리
@@ -68,5 +63,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/mimaskstick/scss/popup.scss';
+// @import '~@/mimaskstick/scss/popup.scss';
 </style>

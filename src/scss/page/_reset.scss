@@ -33,8 +33,13 @@ select,
 textarea {
   // ios default style override
   -webkit-appearance: none;
+  -webkit-border-radius: 0;
   border-radius: 0;
   -webkit-border-radius: 0;
+
+  &::placeholder {
+    opacity: 1; /* 파이어폭스에서 뿌옇게 나오는 현상을 방지하기 위한 css */
+  }
 }
 
 a {
