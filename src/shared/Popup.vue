@@ -15,7 +15,36 @@
       />
       <transition :name="`popup-${animation}`">
         <div class="popup-dialog" v-show="show" :style="dialogStyle">
+          <!-- basic -->
           <slot></slot>
+
+          <!-- 기존 팝업 형식 ( type: Personal, Post,) -->
+          <header
+            class="popup__header"
+            v-if="type == 'Personal' || type == 'Post'"
+          >
+            <div class="popup__inner">
+              <slot name="header">
+                <h1>기본 타이틀</h1>
+              </slot>
+            </div>
+          </header>
+          <div
+            class="popup__content"
+            v-if="type == 'Personal' || type == 'Post'"
+          >
+            <div class="popup__inner">
+              <slot name="content">
+                <p>기본 컨텐츠</p>
+                <!-- 우편번호 팝업 -->
+                <DaumPostcode
+                  v-if="type == 'Post'"
+                  :on-complete="postComplete"
+                  :animation="true"
+                />
+              </slot>
+            </div>
+          </div>
           <span class="popup-close" v-if="closeButton" @click="$emit('hide')"
             >닫기</span
           >
@@ -26,12 +55,18 @@
 </template>
 
 <script>
+import DaumPostcode from 'vuejs-daum-postcode'
+
 export default {
   name: 'popup',
   props: {
     show: {
       type: Boolean,
       required: true
+    },
+    type: {
+      type: String,
+      default: 'dialog'
     },
     top: {
       type: Number,
@@ -86,6 +121,7 @@ export default {
       default: () => ({})
     }
   },
+  components: { DaumPostcode },
   computed: {
     customDuration() {
       return {
@@ -121,6 +157,31 @@ export default {
       if (this.closeOnClickMask) {
         this.$emit('hide')
       }
+    },
+    postComplete(data) {
+      console.log(data)
+      let fullAddress = data.address
+      let extraAddress = ''
+      if (data.addressType === 'R') {
+        if (data.bname !== '') {
+          extraAddress += data.bname
+        }
+        if (data.buildingName !== '') {
+          extraAddress +=
+            extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName
+        }
+        fullAddress += extraAddress !== '' ? ` (${extraAddress})` : ''
+      }
+      this.userModel.zipcode = data.zonecode
+      this.userModel.address = fullAddress
+      EventBus.$emit('updateUserAddress', this.userModel)
+      // this.updateUserAddress(this.userModel)
+      this.openPop('Personal')
+
+      // ie에서 우편번호 팝업 관련 버그 처리
+      $('#personalAddressDetail')
+        .first()
+        .focus()
     }
   }
 }

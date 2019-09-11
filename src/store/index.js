@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import kmcAuth from '@/store/modules/kmcAuth';
 // import mimastickStore from '@/mimaskstick/store'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
+    kmcAuth
     // mimastickStore
   },
   state: {

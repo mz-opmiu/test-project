@@ -5,26 +5,24 @@
     animation="rotate"
     @hide="closePop()"
     :customStyles="this.customStyles"
+    :type="'Personal'"
   >
-    <BasePopPersonal>
-      <template #header>
-        <h1 class="line">
-          <img
-            src="https://donginbi-event.s3.amazonaws.com/mimaskstick/images/shared/tl-personal.png"
-            alt="정보입력"
-          />
-        </h1>
-      </template>
-      <template #content>
-        <PersonalForm :phoneCorpAuth="true"></PersonalForm>
-      </template>
-    </BasePopPersonal>
+    <template #header>
+      <h1 class="line">
+        <img
+          src="https://donginbi-event.s3.amazonaws.com/mimaskstick/images/shared/tl-personal.png"
+          alt="정보입력"
+        />
+      </h1>
+    </template>
+    <template #content>
+      <PersonalForm :phoneCorpAuth="true"></PersonalForm>
+    </template>
   </Popup>
 </template>
 
 <script>
 import Popup from '@/shared/Popup'
-import BasePopPersonal from '@/shared/BasePopPersonal'
 import PersonalForm from '@/shared/PersonalForm'
 
 import { mapState, mapMutations } from 'vuex'
@@ -45,7 +43,7 @@ export default {
     }
   },
 
-  components: { Popup, BasePopPersonal, PersonalForm },
+  components: { Popup, PersonalForm },
   computed: {
     ...mapState(['currentPop'])
   },
@@ -58,7 +56,7 @@ export default {
 <style lang="scss">
 @import '~@/mimaskstick/scss/_variables.scss';
 
-.mimaskstick .personal {
+.mimaskstick .popup.personal {
   .phone-corp,
   .popbtn__phone-auth,
   .popbtn__zipcode {

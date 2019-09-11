@@ -140,10 +140,28 @@ export default {
   },
   methods: {
     ...mapMutations(['openPop']),
-    sendKmcAuth() {}
+    sendKmcAuth() {},
+
+    confirmKmcAuth() {
+      //인증번호 확인
+      // let kcmNum = new FormData()
+      // kcmNum.append('authNo', this.kmcAuth.number)
+      // this.$axios
+      //   .post('/api/kmc/save', kcmNum)
+      //   .then(res => {
+      //     if (res.data.result === true) {
+      //       alert('인증이 완료되었습니다.')
+      //       //인증번호 입력칸 hide, dimm show
+      //       this.kmcAuth.isAuth = true
+      //     } else {
+      //       alert(res.data.message)
+      //     }
+      //   })
+      //   .catch(err => {
+      //     console.log(err.error)
+      //   })
+    }
   },
-  destroyed() {
-    alert()
-  }
+  destroyed() {}
 }
 </script>
