@@ -4,7 +4,6 @@
     :type="'Post'"
     :show="this.currentPop == 'Post'"
     :top="100"
-    animation="rotate"
     @hide="openPop('Personal')"
   >
     <template #header>
@@ -32,8 +31,7 @@ export default {
     ...mapState(['currentPop'])
   },
   methods: {
-    ...mapMutations(['openPop']),
-    clearForm() {}
+    ...mapMutations(['openPop'])
   }
 }
 </script>

@@ -1,11 +1,9 @@
 <template>
   <Popup
     :top="100"
-    :show="this.currentPop == 'Personal'"
-    animation="rotate"
-    @hide="closePop()"
-    :customStyles="this.customStyles"
     :type="'Personal'"
+    :show="this.currentPop == 'Personal'"
+    @hide="closePop()"
   >
     <template #header>
       <h1 class="line">
@@ -16,7 +14,7 @@
       </h1>
     </template>
     <template #content>
-      <PersonalForm :phoneCorpAuth="true"></PersonalForm>
+      <PersonalForm :phoneCorpAuth="false"></PersonalForm>
     </template>
   </Popup>
 </template>
@@ -35,10 +33,6 @@ export default {
       kmcAuth: {
         isAuth: null,
         number: ''
-      },
-
-      customStyles: {
-        background: '#eee2cf'
       }
     }
   },

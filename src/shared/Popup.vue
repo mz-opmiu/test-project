@@ -1,5 +1,5 @@
 <template>
-  <transition name="popup-fade">
+  <transition name="popup--fade">
     <div
       v-show="show"
       tabindex="-1"
@@ -8,17 +8,17 @@
       @keyup.esc="onEsc"
     >
       <div
-        class="popup-mask"
+        class="popup__mask"
         v-if="mask"
         @click="onClickMask"
         :style="customMaskStyles"
       />
       <transition :name="`popup-${animation}`">
-        <div class="popup-dialog" v-show="show" :style="dialogStyle">
+        <div class="popup__dialog" v-show="show" :style="dialogStyle">
           <!-- basic -->
           <slot></slot>
 
-          <!-- 기존 팝업 형식 ( type: Personal, Post,) -->
+          <!-- 기존 팝업 형식 ( type: Personal, Post ) -->
           <header
             class="popup__header"
             v-if="type == 'Personal' || type == 'Post'"
@@ -45,7 +45,7 @@
               </slot>
             </div>
           </div>
-          <span class="popup-close" v-if="closeButton" @click="$emit('hide')"
+          <span class="popup__close" v-if="closeButton" @click="$emit('hide')"
             >닫기</span
           >
         </div>

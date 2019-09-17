@@ -1,14 +1,9 @@
 <template>
   <form action="">
     <dl>
-      <dt><label for="personalName">이름</label></dt>
+      <dt><label for="infoName">이름</label></dt>
       <dd>
-        <input
-          type="text"
-          name="name"
-          id="personalName"
-          v-model="userModel.name"
-        />
+        <input type="text" name="name" id="infoName" v-model="userModel.name" />
         <select
           name="phoneCorp"
           id="phoneCorp"
@@ -28,14 +23,14 @@
     </dl>
 
     <dl class="phone">
-      <dt><label for="personalPhone">연락처</label></dt>
+      <dt><label for="infoPhone">연락처</label></dt>
       <dd>
         <input
           type="tel"
           name="phone"
           maxlength="11"
           placeholder="'-'없이 입력해주세요"
-          id="personalPhone"
+          id="infoPhone"
           v-model="userModel.phone"
         />
         <button
@@ -44,19 +39,19 @@
           @click="sendKmcAuth()"
           v-if="phoneCorpAuth == true"
         >
-          <label for="personal-zipcode">인증번호 발송</label>
+          <label for="infoZipcode">인증번호 발송</label>
         </button>
       </dd>
     </dl>
 
     <dl class="zipcode" v-if="address == true">
-      <dt><label for="personalAddress">주소</label></dt>
+      <dt><label for="infoAddress">주소</label></dt>
       <dd>
         <input
           type="text"
           name="zipcode"
           readonly
-          id="personalZipcode"
+          id="infoZipcode"
           v-model="userModel.zipcode"
         />
         <button
@@ -64,24 +59,24 @@
           @click="openPop('Post')"
           class="popbtn popbtn__zipcode"
         >
-          <label for="personalZipcode">우편번호 찾기</label>
+          <label for="infoZipcode">우편번호 찾기</label>
         </button>
       </dd>
     </dl>
     <dl class="address" v-if="address == true">
       <dd>
-        <label for="personalAddress"
+        <label for="infoAddress"
           ><input
             type="text"
             name="address"
-            id="personal-address"
+            id="infoAddress"
             readonly
             v-model="userModel.address"
         /></label>
         <input
           type="text"
           name="addressDetail"
-          id="personalAddress"
+          id="infoAddress"
           placeholder="상세주소를 입력해주세요"
           v-model="userModel.addressDetail"
         />

@@ -16,11 +16,11 @@ $image-url: 'https://donginbi-event.s3.amazonaws.com/mimaskstick/images/shared';
 // 이벤트에만 적용시킬 popup 관련 공통 style 앞에
 // css 우선순위를 높이기 위해 이벤트 명 추가
 .mimaskstick .popup {
-  &-dialog {
+  &__dialog {
     background: #eee2cf;
   }
 
-  &-close {
+  &__close {
     position: absolute;
     top: 20px;
     right: 20px;
